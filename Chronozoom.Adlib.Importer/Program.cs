@@ -33,53 +33,55 @@ namespace Chronozoom.Adlib.Importer
         private static OrientDao dao;
         static void Main(string[] args)
         {
-            dao = new OrientDao();
-            dao.Connect(HOST, PORT, SERVERUSERNAME, SERVERPASSWORD);
-            dao.Connect(HOST, PORT, USERNAME, PASSWORD, DATABASE);
-            CreateDatabaseIfNotExists(dao);
+            //dao = new OrientDao();
+            //dao.Connect(HOST, PORT, SERVERUSERNAME, SERVERPASSWORD);
+            //dao.Connect(HOST, PORT, USERNAME, PASSWORD, DATABASE);
+            //CreateDatabaseIfNotExists(dao);
 
-            Timeline timeline = new Timeline() { Title = "Musea in the Netherlands" };
-            ORID timelineOrid = dao.AddTimeline(timeline);
-            ContentItem first = new ContentItem();
-            first.Title = "Amsterdam Museum collection sorted by date => creator";
+            //Timeline timeline = new Timeline() { Title = "Musea in the Netherlands" };
+            //ORID timelineOrid = dao.AddTimeline(timeline);
+            //ContentItem first = new ContentItem();
+            //first.Title = "Amsterdam Museum collection sorted by date => creator";
 
-            ORID firstOrid = dao.AddContentItem(first, timelineOrid);
+            //ORID firstOrid = dao.AddContentItem(first, timelineOrid);
 
-            Console.WriteLine("Download facets");
-            AdlibFacets facets = DownloadCreatorFacets();
-            Console.WriteLine("End facets");
+            //Console.WriteLine("Download facets");
+            //AdlibFacets facets = DownloadCreatorFacets();
+            //Console.WriteLine("End facets");
 
-            Console.WriteLine("Download by creator");
-            List<Task<Tuple<string, AdlibSearchRecords>>> downloadItemsByCreator = DownloadItemsByCreator(facets);
-            Console.WriteLine("End download by creator");
+            //Console.WriteLine("Download by creator");
+            //List<Task<Tuple<string, AdlibSearchRecords>>> downloadItemsByCreator = DownloadItemsByCreator(facets);
+            //Console.WriteLine("End download by creator");
 
-            Console.WriteLine("Parse to cz domain");
-            List<ContentItem> items = ParseAdlibItemsToContentItems(downloadItemsByCreator, firstOrid);
-            Console.WriteLine("End parse to cz domain");
+            //Console.WriteLine("Parse to cz domain");
+            //List<ContentItem> items = ParseAdlibItemsToContentItems(downloadItemsByCreator, firstOrid);
+            //Console.WriteLine("End parse to cz domain");
 
-            var begin = items.Min(r => r.BeginDate);
-            var end = items.Max(r => r.EndDate);
-            if (end < begin)
-            {
-                end = begin;
-            }
-            dao.UpdateParent(begin, end, firstOrid, true);
+            //var begin = items.Min(r => r.BeginDate);
+            //var end = items.Max(r => r.EndDate);
+            //if (end < begin)
+            //{
+            //    end = begin;
+            //}
+            //dao.UpdateParent(begin, end, firstOrid, true);
 
-            //first.ContentItems = items;
-            //first.BeginDate = first.ContentItems.Min(r => r.BeginDate);
-            //first.EndDate = first.ContentItems.Max(r => r.EndDate);
-            //first.ContentItems = items;
-            //timeline.ContentItems = new List<ContentItem> { first };
-            //timeline.BeginDate = first.ContentItems.Min(r => r.BeginDate);
-            //timeline.EndDate = first.ContentItems.Max(r => r.EndDate);
-            //if (timeline.BeginDate > timeline.EndDate) timeline.EndDate = timeline.BeginDate;
-            //if (first.BeginDate > first.EndDate) first.EndDate = first.BeginDate;
-            //string json = JsonConvert.SerializeObject(timeline, Formatting.Indented);
-            ////write string to file
-            //System.IO.File.WriteAllText(@"D:\path1.txt", json);
-            //string json = File.ReadAllText(@"D:\path1.txt");
-            //Timeline timeline = JsonConvert.DeserializeObject<Timeline>(json);
-            //dao.Disconnect();
+            ////first.ContentItems = items;
+            ////first.BeginDate = first.ContentItems.Min(r => r.BeginDate);
+            ////first.EndDate = first.ContentItems.Max(r => r.EndDate);
+            ////first.ContentItems = items;
+            ////timeline.ContentItems = new List<ContentItem> { first };
+            ////timeline.BeginDate = first.ContentItems.Min(r => r.BeginDate);
+            ////timeline.EndDate = first.ContentItems.Max(r => r.EndDate);
+            ////if (timeline.BeginDate > timeline.EndDate) timeline.EndDate = timeline.BeginDate;
+            ////if (first.BeginDate > first.EndDate) first.EndDate = first.BeginDate;
+            ////string json = JsonConvert.SerializeObject(timeline, Formatting.Indented);
+            //////write string to file
+            ////System.IO.File.WriteAllText(@"D:\path1.txt", json);
+            ////string json = File.ReadAllText(@"D:\path1.txt");
+            ////Timeline timeline = JsonConvert.DeserializeObject<Timeline>(json);
+            ////dao.Disconnect();
+            /// 
+            ProgramMssql.GenerateAnneFrankTimeline();
             Console.WriteLine("Ended....... press a key to close");
             Console.ReadKey();
         }

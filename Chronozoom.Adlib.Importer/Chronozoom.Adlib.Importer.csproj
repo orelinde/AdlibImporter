@@ -37,6 +37,7 @@
       <HintPath>..\..\..\..\Desktop\OrientDB-NET.binary-master\src\Orient\Orient.Client\bin\Debug\Orient.Client.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml.Linq" />
@@ -48,11 +49,17 @@
   <ItemGroup>
     <Compile Include="AdlibXml\FacetRecord\AdlibFacets.cs" />
     <Compile Include="AdlibXml\SearchRecord\AdlibSearchRecord.cs" />
+    <Compile Include="Data\MssqlDao.cs" />
     <Compile Include="Data\OrientDao.cs" />
     <Compile Include="Entities\ContentItem.cs" />
     <Compile Include="Entities\Contains.cs" />
     <Compile Include="Entities\Timeline.cs" />
+    <Compile Include="Mssql\ContentItem.cs" />
+    <Compile Include="Mssql\SqlMapper.cs" />
+    <Compile Include="Mssql\SqlMapperAsync.cs" />
+    <Compile Include="Mssql\Timeline.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="ProgramMssql.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

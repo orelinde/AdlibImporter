@@ -17,7 +17,7 @@ namespace Chronozoom.Adlib.Importer.Data
 
         public void Connect(string host, int port, string username, string password, string database)
         {
-            OClient.CreateDatabasePool(host, port, database, ODatabaseType.Graph, username, password, 10, database);
+            OClient.CreateDatabasePool(host, port, database, ODatabaseType.Graph, username, password, 10, database,false);
             db = new ODatabase(database);
         }
 

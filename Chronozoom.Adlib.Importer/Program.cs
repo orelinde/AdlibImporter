@@ -23,10 +23,10 @@ namespace Chronozoom.Adlib.Importer
     {
         private static string APIURL = "http://amdata.adlibsoft.com/wwwopac.ashx?database=AMcollect&search=all&limit=400&xmltype=grouped";
         private static string APIFACETS = "http://amdata.adlibsoft.com/wwwopac.ashx?command=facets&database=amcollect&search=all&facet=creator&xmltype=grouped&limit=400";
-        private static string HOST = "84.25.163.6"; //84.25.163.6 david ip
+        private static string HOST = "84.25.163.6"; 
         private static int PORT = 2424;
         private static string SERVERUSERNAME = "root";
-        private static string SERVERPASSWORD = "password"; //8E644FE1AE29539AF2208479DE1796D79BE579627CB28874054E665B0562BBC7
+        private static string SERVERPASSWORD = "password"; 
         private static string USERNAME = "chronozoom";
         private static string PASSWORD = "password";
         private static string DATABASE = "ChronoZoom";
